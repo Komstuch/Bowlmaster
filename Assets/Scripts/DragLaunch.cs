@@ -30,7 +30,12 @@ public class DragLaunch : MonoBehaviour {
         launchVector = launchVector / dragDuration; //Scale the launch direction with drag speed
 
         ball.Launch(launchVector);
-     
     }
-}
+
+    public void MoveStart(float xNudge) {
+        if ( ! ball.inPlay) {
+            ball.transform.Translate(new Vector3(xNudge, 0, 0));
+        }
+    }
+}   
 

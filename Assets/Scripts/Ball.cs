@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour {
     private AudioSource audioSource;
 
     public Vector3 launchVelocity;
+    public bool inPlay = false;
 
 	void Start ()
     {
@@ -17,6 +18,7 @@ public class Ball : MonoBehaviour {
 
     public void Launch(Vector3 velocity)
     {
+        inPlay = true;
         rigidBody.useGravity = true; //Turn on Ball velocity at launch 
         rigidBody.velocity = velocity;
 

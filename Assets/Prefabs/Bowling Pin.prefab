@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4256562965752864}
   - component: {fileID: 54200368248183008}
   m_Layer: 0
-  m_Name: Pin 1
+  m_Name: Bowling Pin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,9 +159,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1715302332236638}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 1.53
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

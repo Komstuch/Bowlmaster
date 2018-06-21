@@ -11,7 +11,6 @@ public class Pin : MonoBehaviour {
 	}
 	
 	void Update () {
-        print(name + " " + IsStanding());
     }
 
     public bool IsStanding(){
@@ -23,6 +22,8 @@ public class Pin : MonoBehaviour {
         if (tiltInX <= standingThreshold && tiltInZ <= standingThreshold) {
             return true;
         }
-        return false;
+        else {
+            return false;
+        }
     }
 }

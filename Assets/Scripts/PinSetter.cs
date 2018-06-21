@@ -30,6 +30,15 @@ public class PinSetter : MonoBehaviour {
         return standingPins;
     }
 
+    private void OnTriggerExit(Collider collider)
+    {
+        GameObject thingLeft = collider.gameObject;
+
+        if (thingLeft.GetComponent<Pin>()){
+            Destroy(thingLeft);
+        }
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.GetComponent<Ball>()) // If we hit the ball change the color of the display to red
@@ -39,13 +48,5 @@ public class PinSetter : MonoBehaviour {
         }
     }
 
-    private void OnTriggerExit(Collider collider)
-    {
-        GameObject thingLeft = collider.gameObject;
-    
-        if (thingLeft.GetComponentInParent<Pin>()); //Pin component is a PARENT of the pin collider so we have to access it's game component
-        {
-             Destroy(collider.transform.parent.gameObject);
-        }
-    }
+
 }

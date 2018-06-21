@@ -5,12 +5,46 @@ using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
 
+    public int lastStandingCount = -1;
     public Text standingDisplay;
 
-    bool ballEnteredBox = false;
+    private Ball ball;
+    private float lastChangeTime;
+    private bool ballEnteredBox = false;
+
+    private void Start(){
+        ball = GameObject.FindObjectOfType<Ball>();
+    }
 
     void Update(){
         standingDisplay.text = CountStanding().ToString();
+
+        if (ballEnteredBox){
+            CheckStanding();
+        }
+    }
+
+    void CheckStanding()
+    {
+        if(lastStandingCount != CountStanding())
+        {
+            lastStandingCount = CountStanding();
+            lastChangeTime = Time.time;
+            return;
+        }
+
+        float settleTime = 3f; // How long to consider pins settled
+    
+        if (Time.time - lastChangeTime >= settleTime){ // If last change was 3s ago
+            PinsHaveSettled();
+        }
+    }
+
+    void PinsHaveSettled() {
+        ball.Reset();
+        lastStandingCount = -1; //Pins have settled and ball not back in box
+        ballEnteredBox = false;
+        standingDisplay.color = Color.green; // Update diplay color to green
     }
 
     int CountStanding() {
@@ -21,12 +55,8 @@ public class PinSetter : MonoBehaviour {
         foreach (Pin currentPin in pins) {
             if (currentPin.IsStanding()) {
                 standingPins++;
-
             }
-
-
         }
-
         return standingPins;
     }
 

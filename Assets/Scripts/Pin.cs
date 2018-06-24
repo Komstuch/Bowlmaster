@@ -5,13 +5,25 @@ using UnityEngine;
 public class Pin : MonoBehaviour {
 
     public float standingThreshold = 5f;
+    public float distToRaise = 40f;
 
-	void Start () {
 
-	}
-	
-	void Update () {
+    public void RaiseIfStanding()
+    {       // Raise standing pins only by distToRaise 
+        Debug.Log("Raising Pin " + name);
+        if (IsStanding()){
+            transform.Translate(new Vector3(0, distToRaise, 0), Space.World);
+            GetComponent<Rigidbody>().useGravity = false;
+        }
+    }
 
+    public void LowerIfStanding(){
+        // Lower standing pins only by distanceToRaise 
+        Debug.Log("Lowering Pin "+name);
+        if (IsStanding()){
+            transform.Translate(new Vector3(0, -distToRaise, 0), Space.World);
+            GetComponent<Rigidbody>().useGravity = true;
+        }
     }
 
     public bool IsStanding(){

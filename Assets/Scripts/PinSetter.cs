@@ -7,7 +7,7 @@ public class PinSetter : MonoBehaviour {
 
     public int lastStandingCount = -1;
     public Text standingDisplay;
-    public float distanceToRaise = 40f;
+    public GameObject pinSet;
 
     private Ball ball;
     private float lastChangeTime;
@@ -21,36 +21,30 @@ public class PinSetter : MonoBehaviour {
         standingDisplay.text = CountStanding().ToString();
 
         if (ballEnteredBox){
-            CheckStanding();
+            UpdateStandingCountAndSettle();
         }
     }
 
-    public void RaisePins() {       // Raise standing pins only by distanceToRaise 
-        Debug.Log("Raising Pins");
-        foreach (Pin currentPin in GameObject.FindObjectsOfType<Pin>())
-        {
-            if (currentPin.IsStanding())
-            {
-                currentPin.transform.Translate(new Vector3(0, distanceToRaise, 0));
-            }
+    public void RaisePins() {
+        foreach (Pin currentPin in GameObject.FindObjectsOfType<Pin>()){
+            currentPin.RaiseIfStanding();
         }
     }
 
-    public void LowerPins()
-    {
-        // Lower standing pins only by distanceToRaise 
-        Debug.Log("Lowering Pins");
+    public void LowerPins() {
+        foreach (Pin currentPin in GameObject.FindObjectsOfType<Pin>()) {
+            currentPin.LowerIfStanding();
+        }
     }
 
-    public void RenewPins()
-    {
+    public void RenewPins(){
         Debug.Log("Renewing Pins");
+        Instantiate(pinSet, new Vector3(0, 41, 0), Quaternion.identity);
     }
 
-    void CheckStanding()
+    void UpdateStandingCountAndSettle()
     {
-        if(lastStandingCount != CountStanding())
-        {
+        if(lastStandingCount != CountStanding()){
             lastStandingCount = CountStanding();
             lastChangeTime = Time.time;
             return;
@@ -81,15 +75,6 @@ public class PinSetter : MonoBehaviour {
             }
         }
         return standingPins;
-    }
-
-    private void OnTriggerExit(Collider collider)
-    {
-        GameObject thingLeft = collider.gameObject;
-
-        if (thingLeft.GetComponent<Pin>()){
-            Destroy(thingLeft);
-        }
     }
 
     private void OnTriggerEnter(Collider collider)

@@ -13,13 +13,9 @@ public class CameraController : MonoBehaviour {
 	}
 	
 	void Update () {
-
-
         if ((ball.transform.position.z) <= 1700f) { // If camera is in front of the pin
 
             transform.position = ball.transform.position + offset;
         }
-
-		
 	}
 }

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Ball))]
-public class DragLaunch : MonoBehaviour {
+public class BallDragLaunch : MonoBehaviour {
 
     private Ball ball;
-
-    float startTime, dragDuration;
-    Vector3 startMousePosition, dragDirection, launchVector;
+    private float startTime, dragDuration;
+    private Vector3 startMousePosition, dragDirection, launchVector;
 
 
     void Start () {
@@ -18,8 +17,7 @@ public class DragLaunch : MonoBehaviour {
     public void DragStart() { // Capture time and position of mouse click
        startTime = Time.timeSinceLevelLoad;
 
-        startMousePosition = Input.mousePosition;
-
+       startMousePosition = Input.mousePosition;
     }
 
     public void DrageEnd (){

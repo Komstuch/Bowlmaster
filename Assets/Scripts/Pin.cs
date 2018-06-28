@@ -10,7 +10,6 @@ public class Pin : MonoBehaviour {
 
     public void RaiseIfStanding()
     {       // Raise standing pins only by distToRaise 
-        Debug.Log("Raising Pin " + name);
         if (IsStanding()){
             transform.Translate(new Vector3(0, distToRaise, 0), Space.World);
             GetComponent<Rigidbody>().useGravity = false;
@@ -19,7 +18,6 @@ public class Pin : MonoBehaviour {
 
     public void LowerIfStanding(){
         // Lower standing pins only by distanceToRaise 
-        Debug.Log("Lowering Pin "+name);
         if (IsStanding()){
             transform.Translate(new Vector3(0, -distToRaise, 0), Space.World);
             GetComponent<Rigidbody>().useGravity = true;

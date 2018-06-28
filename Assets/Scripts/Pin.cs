@@ -20,6 +20,7 @@ public class Pin : MonoBehaviour {
         // Lower standing pins only by distanceToRaise 
         if (IsStanding()){
             transform.Translate(new Vector3(0, -distToRaise, 0), Space.World);
+            transform.rotation=  Quaternion.Euler(270f, 0f, 0f);
             GetComponent<Rigidbody>().useGravity = true;
         }
     }

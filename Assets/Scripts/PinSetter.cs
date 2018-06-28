@@ -26,7 +26,6 @@ public class PinSetter : MonoBehaviour {
 
     void Update(){
         standingDisplay.text = CountStanding().ToString();
-        print(ballOutOfPlay);
         if (ballOutOfPlay){
             UpdateStandingCountAndSettle();
             standingDisplay.color = Color.red;

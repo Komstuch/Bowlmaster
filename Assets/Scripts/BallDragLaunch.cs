@@ -15,19 +15,23 @@ public class BallDragLaunch : MonoBehaviour {
 	}
 
     public void DragStart() { // Capture time and position of mouse click
-       startTime = Time.timeSinceLevelLoad;
+        if (!ball.inPlay) {
+            startTime = Time.timeSinceLevelLoad;
 
-       startMousePosition = Input.mousePosition;
+            startMousePosition = Input.mousePosition;
+        }
     }
 
     public void DrageEnd (){
-        dragDuration = Time.timeSinceLevelLoad - startTime;
-        dragDirection = Input.mousePosition - startMousePosition;
+        if (!ball.inPlay){
+            dragDuration = Time.timeSinceLevelLoad - startTime;
+            dragDirection = Input.mousePosition - startMousePosition;
 
-        launchVector = new Vector3(dragDirection.x, dragDirection.z, dragDirection.y); // Switch coordinates so the ball moves in plane paralell to the swipe direction
-        launchVector = launchVector / dragDuration; //Scale the launch direction with drag speed
+            launchVector = new Vector3(dragDirection.x, dragDirection.z, dragDirection.y); // Switch coordinates so the ball moves in plane paralell to the swipe direction
+            launchVector = launchVector / dragDuration; //Scale the launch direction with drag speed
 
-        ball.Launch(launchVector);
+            ball.Launch(launchVector);
+        }
     }
 
     public void MoveStart(float xNudge) {

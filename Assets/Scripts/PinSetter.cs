@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
 
-    public int lastStandingCount = -1;
     public Text standingDisplay;
     public GameObject pinSet;
 
+    private Animator animator;
     private ActionMaster actionMaster;
     private Ball ball;
+
     private float lastChangeTime;
-    private bool ballEnteredBox = false;
     private int lastSettledCount = 10;
     private int currentBowlScore = 0;
-    private Animator animator;
+    private int lastStandingCount = -1;
+    private bool ballOutOfPlay = false;
 
     private void Start(){
         ball = GameObject.FindObjectOfType<Ball>();
@@ -25,10 +26,15 @@ public class PinSetter : MonoBehaviour {
 
     void Update(){
         standingDisplay.text = CountStanding().ToString();
-
-        if (ballEnteredBox){
+        print(ballOutOfPlay);
+        if (ballOutOfPlay){
             UpdateStandingCountAndSettle();
+            standingDisplay.color = Color.red;
         }
+    }
+
+    public void SetBallOutOfPlay() {
+        ballOutOfPlay = true;
     }
 
     public void RaisePins() {
@@ -44,7 +50,6 @@ public class PinSetter : MonoBehaviour {
     }
 
     public void RenewPins(){
-        Debug.Log("Renewing Pins");
         Instantiate(pinSet, new Vector3(0, 41, 0), Quaternion.identity);
     }
 
@@ -69,11 +74,11 @@ public class PinSetter : MonoBehaviour {
         lastSettledCount = standing;
 
         TriggerAnimator();
-
         ball.Reset();
         lastStandingCount = -1; //Pins have settled and ball not back in box
-        ballEnteredBox = false;
+        ballOutOfPlay = false;
         standingDisplay.color = Color.green; // Update diplay color to green
+
     }
 
     void TriggerAnimator() {
@@ -105,14 +110,5 @@ public class PinSetter : MonoBehaviour {
             }
         }
         return standingPins;
-    }
-
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.GetComponent<Ball>()) // If we hit the ball change the color of the display to red
-        {
-            ballEnteredBox = true;
-            standingDisplay.color = Color.red;
-        }
     }
 }

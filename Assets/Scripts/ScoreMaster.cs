@@ -24,45 +24,80 @@ public class ScoreMaster {
     public static List<int> ScoreFrames (List<int> rolls) {
         List<int> frameList = new List<int>();
 
-        //int frameNumber = 1;
+        int buffer1 = 0;
+        int buffer1Count = 0;
+        int buffer2 = 0;
+        int buffer2Count = 0;
+        int buffer3 = 0;
         int rollsCount = 0;
         int frameScore = 0;
-        int StrikeBonus = 0;
         int StrikeCounter = 0; 
-        int SpareBonus = 0;
+        int previousRoll = 0;
 
         foreach (int roll in rolls)
         {
             rollsCount++;
 
-            if (roll == 10 && (rollsCount % 2) == 1) {
-                StrikeBonus += roll;
-                StrikeCounter = 2;
-                rollsCount += 1;
-            } else {
-                frameScore += roll;
-                if(StrikeCounter > 0)
+            if (roll == 10)
+            {
+                if(buffer1 != 0)
                 {
-                    StrikeBonus += roll;
-                    StrikeCounter--;
-                    if (StrikeCounter == 0) {
-                        frameList.Add(StrikeBonus);
+                    buffer1 += roll;
+                    buffer2 += roll;
+                    buffer2Count = 2;
+                    buffer1Count--;
+                    rollsCount++;
+                }
+                else
+                {
+                    rollsCount++;
+                    buffer1 = roll;
+                    buffer1Count = 2;
+                }
+            } else {
+                if (buffer1Count>0) {
+                    buffer1 += roll;
+                    buffer1Count--;
+                    if(buffer1Count == 0)
+                    {
+                        frameList.Add(buffer1);
+                        buffer1 = 0;
                     }
                 }
-                if (rollsCount % 2 == 0) {
-                    if (frameScore == 10) {
-                        SpareBonus = frameScore;
+                if (buffer2Count > 0)
+                {
+                    buffer2 += roll;
+                    buffer2Count--;
+                    if (buffer2Count == 0)
+                    {
+                        frameList.Add(buffer2);
+                        buffer2 = 0;
+                    }
+                }
+                frameScore += roll;
+                if (rollsCount % 2 == 0)
+                {
+                    if (frameScore == 10)
+                    {
+                        buffer3 = frameScore;
                         frameScore = 0;
                     }
-                    else {
+                    else
+                    {
                         frameList.Add(frameScore);
                         frameScore = 0;
                     }
-                } else if (SpareBonus !=0) {
-                    frameList.Add(roll + SpareBonus);
-                    SpareBonus = 0;
+                }
+                else if (buffer3 != 0)
+                {
+                    frameList.Add(roll + buffer3);
+                    buffer3 = 0;
                 }
             }
+        }
+        foreach(int frame in frameList)
+        {
+            Debug.Log("Frame: " + frame);
         }
         return frameList;
     }
@@ -72,6 +107,7 @@ public class ScoreMaster {
 }
 
 
+////Returns list of individual frame scores
 //public static List<int> ScoreFrames(List<int> rolls)
 //{
 //    List<int> frameList = new List<int>();
@@ -79,18 +115,53 @@ public class ScoreMaster {
 //    //int frameNumber = 1;
 //    int rollsCount = 0;
 //    int frameScore = 0;
+//    int StrikeBonus = 0;
+//    int StrikeCounter = 0;
+//    int SpareBonus = 0;
 
 //    foreach (int roll in rolls)
 //    {
 //        rollsCount++;
-//        frameScore += roll;
-//        if (rollsCount % 2 == 0)
+
+//        if (roll == 10 && (rollsCount % 2) == 1)
 //        {
-//            frameList.Add(frameScore);
-//            frameScore = 0;
+//            StrikeBonus += roll;
+//            StrikeCounter = 2;
+//            rollsCount += 1;
 //        }
-
-
+//        else
+//        {
+//            frameScore += roll;
+//            if (StrikeCounter > 0)
+//            {
+//                StrikeBonus += roll;
+//                StrikeCounter--;
+//                if (StrikeCounter == 0)
+//                {
+//                    frameList.Add(StrikeBonus);
+//                }
+//            }
+//            if (rollsCount % 2 == 0)
+//            {
+//                if (frameScore == 10)
+//                {
+//                    SpareBonus = frameScore;
+//                    frameScore = 0;
+//                }
+//                else
+//                {
+//                    frameList.Add(frameScore);
+//                    frameScore = 0;
+//                }
+//            }
+//            else if (SpareBonus != 0)
+//            {
+//                frameList.Add(roll + SpareBonus);
+//                SpareBonus = 0;
+//            }
+//        }
 //    }
 //    return frameList;
 //}
+
+

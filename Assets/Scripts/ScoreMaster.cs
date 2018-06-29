@@ -24,8 +24,21 @@ public class ScoreMaster {
     public static List<int> ScoreFrames (List<int> rolls) {
         List<int> frameList = new List<int>();
 
-        // Code
+        //int frameNumber = 1;
+        int rollsCount = 0;
+        int frameScore = 0;
 
+        foreach (int roll in rolls)
+        {
+            rollsCount++;
+            frameScore += roll; 
+            if (rollsCount % 2 == 0) {
+                frameList.Add(frameScore);
+                frameScore = 0;
+            }
+
+
+        }
         return frameList;
     }
 

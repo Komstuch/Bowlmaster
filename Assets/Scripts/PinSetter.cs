@@ -4,17 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
-
-   
     public GameObject pinSet;
 
     private Animator animator;
-    private ActionMaster actionMaster;
     private PinCounter pinCounter; 
 
     private void Start(){
-       // ball = GameObject.FindObjectOfType<Ball>();
-       // actionMaster = new ActionMaster();
         animator = GetComponent<Animator>();
         pinCounter = GameObject.FindObjectOfType<PinCounter>();
     }

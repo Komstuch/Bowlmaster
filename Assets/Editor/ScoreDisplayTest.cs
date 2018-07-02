@@ -68,4 +68,20 @@ public class ScoreDisplayTest
         string rollsString = "X";
         Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
     }
+
+    [Test]
+    public void T07BowlStrikeOne()
+    {
+        int[] rolls = { 10, 1 };
+        string rollsString = "X 1";
+        Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
+    }
+
+    [Test]
+    public void T08BowlTwoStrikes()
+    {
+        int[] rolls = { 10, 10 };
+        string rollsString = "X X";
+        Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
+    }
 }

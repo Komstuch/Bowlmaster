@@ -38,7 +38,21 @@ public class ScoreDisplay : MonoBehaviour
             {
                 if (rolls[i - 1] + rolls[i] == 10)
                 {
-                    output += "/";
+                    if (i > 1)
+                    {
+                        if (output.Length % 2 == 1)
+                        {
+                            output += "/";
+                        }
+                        else
+                        {
+                            output += rolls[i].ToString();
+                        }
+                    }
+                    else
+                    {
+                        output += "/";
+                    }
                 }
                 else
                 {

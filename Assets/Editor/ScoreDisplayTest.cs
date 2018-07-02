@@ -84,4 +84,28 @@ public class ScoreDisplayTest
         string rollsString = "X X";
         Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
     }
+
+    [Test]
+    public void T09BowlTwoStrikesOne()
+    {
+        int[] rolls = { 10, 10, 1 };
+        string rollsString = "X X 1";
+        Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
+    }
+
+    [Test]
+    public void T10BowlStrikeSpareOne()
+    {
+        int[] rolls = { 10, 1, 9, 1 };
+        string rollsString = "X 1/1";
+        Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
+    }
+
+    [Test]
+    public void T10BowlStrikeSpareSpareStrike()
+    {
+        int[] rolls = { 10, 1, 9, 1, 9, 10};
+        string rollsString = "X 1/1/X";
+        Assert.AreEqual(rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
+    }
 }

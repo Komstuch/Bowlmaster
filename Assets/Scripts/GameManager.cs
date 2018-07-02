@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     private List<int> rolls = new List<int>();
+    private List<int> boxes = new List<int>();
 
     private PinSetter pinSetter;
     private Ball ball;
@@ -17,10 +18,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Bowl(int pinFall) {
-            rolls.Add(pinFall);
-            ball.Reset();
+        rolls.Add(pinFall);
+        boxes.Add(pinFall);
+        ball.Reset();
 
-            ActionMaster.Action nextAction = ActionMaster.NextAction(rolls);
+            ActionMaster.Action nextAction = ActionMaster.NextAction(boxes);
             pinSetter.TriggerAnimator(nextAction);
 
         try{

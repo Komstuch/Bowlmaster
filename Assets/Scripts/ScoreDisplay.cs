@@ -23,43 +23,28 @@ public class ScoreDisplay : MonoBehaviour
 
     public static string FormatRolls(List<int> rolls) {
         string output = "";
-
         for (int i = 0; i < rolls.Count; i++)
         {
 
-            if (rolls[i] == 10)
-            {
-                output += "X";
-                if(rolls.Count - i > 1) // if we CAN look ahead
-                {
+            if (rolls[i] == 0){
+                output += "-";
+            } else if (rolls[i] == 10) {
+                if (output.Length % 2 == 1 && output.Length < 19)  // Handle Spare in  Zero - Ten roll
+                { 
+                    output += "/";
+                } else {
+                    output += "X";
+                }
+                if(rolls.Count - i > 1 && output.Length <19 ) {// if we CAN look ahead and we are before last frame
                     output += " ";
                 }
-            } else if (i > 0)
-            {
-                if (rolls[i - 1] + rolls[i] == 10)
-                {
-                    if (i > 1)
-                    {
-                        if (output.Length % 2 == 1)
-                        {
-                            output += "/";
-                        }
-                        else
-                        {
-                            output += rolls[i].ToString();
-                        }
-                    }
-                    else
-                    {
-                        output += "/";
-                    }
-                }
-                else
-                {
+            } else if (i > 0) {
+                if (rolls[i - 1] + rolls[i] == 10 && (output.Length % 2 == 1 || output.Length == 20)) {
+                    output += "/";
+                } else {
                     output += rolls[i].ToString();
                 }
-            } else
-            {
+            } else {
                 output += rolls[i].ToString();
             }
         }
@@ -68,22 +53,3 @@ public class ScoreDisplay : MonoBehaviour
         return output;
     }
 }
-
-        //for (int i = 0; i<rolls.Count; i++){
-
-        //    if(i == 0) {
-        //        if(rolls[0] == 10) {
-        //            output += "X";
-        //        } else{
-        //            output += rolls[0].ToString();
-        //        }
-        //    } else if (rolls[i] == 10) {
-        //        output += "X";
-        //    } else if (rolls[i - 1] + rolls[i] == 10) {
-        //        output += "/";
-        //    } else {
-        //        output += rolls[i].ToString();
-        //    }
-
-
-        //}

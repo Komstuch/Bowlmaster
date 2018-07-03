@@ -1,0 +1,7 @@
+1. Bold scores
+2. Align scores to left
+3. Make a reset button?
+4. Scale velocity to maximum
+5. SIgnal if ball can be launched - disable balll launch if animator is running
+6. Position swiper higher so it will not be visible during play
+7. Maybe - add button for disabling and enabling the "side rails"

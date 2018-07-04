@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour {
     private PinSetter pinSetter;
     private Ball ball;
     private ScoreDisplay scoreDisplay;
+    private SceneLoader sceneLoader;
 
 	void Start () {
         pinSetter = GameObject.FindObjectOfType<PinSetter>();
         ball = GameObject.FindObjectOfType<Ball>();
         scoreDisplay = GameObject.FindObjectOfType<ScoreDisplay>();
+        sceneLoader = GameObject.FindObjectOfType<SceneLoader>();
     }
 
     public void Bowl(int pinFall) {
@@ -23,6 +25,13 @@ public class GameManager : MonoBehaviour {
         ball.Reset();
 
             ActionMaster.Action nextAction = ActionMaster.NextAction(boxes);
+
+        if(nextAction == ActionMaster.Action.EndGame)
+        {
+            new WaitForSeconds(3);
+            sceneLoader.LoadNextScreen();
+        }
+
             pinSetter.TriggerAnimator(nextAction);
 
         try{

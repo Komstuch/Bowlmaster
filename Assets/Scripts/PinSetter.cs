@@ -7,7 +7,7 @@ public class PinSetter : MonoBehaviour {
     public GameObject pinSet;
 
     private Animator animator;
-    private PinCounter pinCounter; 
+    private PinCounter pinCounter;
 
     private void Start(){
         animator = GetComponent<Animator>();
@@ -35,7 +35,6 @@ public class PinSetter : MonoBehaviour {
 
     public void TriggerAnimator(ActionMaster.Action action)
     {
-        // ActionMaster.Action action = actionMaster.Bowl(currentBowlScore);
         if (action == ActionMaster.Action.Tidy)
         {
             animator.SetTrigger("tidyTrigger");
@@ -52,7 +51,7 @@ public class PinSetter : MonoBehaviour {
         }
         else if (action == ActionMaster.Action.EndGame)
         {
-            throw new UnityException("Don't know how to handle End of the Game");
+           new WaitForSeconds(3);
         }
     }
 }

@@ -16,6 +16,11 @@ public class SceneLoader : MonoBehaviour {
         SceneManager.LoadScene("Start Scene");
     }
 
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
     public void QuitGame() {
         Application.Quit();
     }

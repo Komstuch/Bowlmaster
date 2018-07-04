@@ -30,6 +30,8 @@ public class BallDragLaunch : MonoBehaviour {
             launchVector = new Vector3(dragDirection.x, dragDirection.z, dragDirection.y); // Switch coordinates so the ball moves in plane paralell to the swipe direction
             launchVector = launchVector / dragDuration; //Scale the launch direction with drag speed
 
+            launchVector.x = Mathf.Clamp(launchVector.x, -30f, 30f); // Constrain velocity so ball won't fly off in space
+            launchVector.z = Mathf.Clamp(launchVector.z, 50f, 700f);
             ball.Launch(launchVector);
         }
     }

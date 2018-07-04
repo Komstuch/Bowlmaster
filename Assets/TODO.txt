@@ -1,12 +1,15 @@
-- Bold scores
-- Align scores to left
-- Make a reset button?
-- Scale velocity to maximum
-- SIgnal if ball can be launched - disable balll launch if animator is running
-- Position swiper higher so it will not be visible during play
-- Maybe - add button for disabling and enabling the "side rails"
+- [DONE]Bold scores
+- [DONE]Align scores to left
+- [DONE]Make a reset button
+- [DONE]Scale velocity to maximum
+- Signal if ball can be launched - disable balll launch if animator is running
+- [DONE]Position swiper higher so it will not be visible during play
+- Maybe? - add button for disabling and enabling the "side rails"
 - [DONE]Add Start menu
 - [DONE]Add End Game Scene
 - [DONE]Transition to End Screen After End Game Trigger
+- [DONE] Fix lighting
 - Pass final score to end game Screen (static?)
 - Add fancy game button sprites
+- [DONE]Change the game screens font
+- Fix pin settle green display

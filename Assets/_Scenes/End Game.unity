@@ -387,11 +387,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f14796c03de0ab04fb449a08b6adaa14, type: 3}
-    m_FontSize: 130
+    m_Font: {fileID: 12800000, guid: cce806c1c159fc84b9b701f0ca614e89, type: 3}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 174
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -399,7 +399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start Again
+  m_Text: START AGIAN
 --- !u!222 &523410943
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -467,11 +467,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f14796c03de0ab04fb449a08b6adaa14, type: 3}
-    m_FontSize: 271
+    m_Font: {fileID: 12800000, guid: cce806c1c159fc84b9b701f0ca614e89, type: 3}
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 271
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -479,7 +479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Over!
+  m_Text: GAME OVER
 --- !u!222 &801471760
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -24,6 +24,9 @@ public class PinCounter : MonoBehaviour {
         {
             UpdateStandingCountAndSettle();
             standingDisplay.color = Color.red;
+        } else
+        {
+            standingDisplay.color = Color.green;
         }
     }
 
@@ -66,8 +69,6 @@ public class PinCounter : MonoBehaviour {
 
         lastStandingCount = -1; //Pins have settled and ball not back in box
         ballOutOfPlay = false;
-        standingDisplay.color = Color.green; // Update diplay color to green
-
     }
 
     int CountStanding()

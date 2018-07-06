@@ -7,12 +7,15 @@ public class Ball : MonoBehaviour {
     private Rigidbody rigidBody;
     private AudioSource audioSource;
     private Vector3 startPosition;
+    private BallSignal ballSignal;
 
     public Vector3 launchVelocity;
     public bool inPlay = false;
 
 	void Start ()
     {
+        ballSignal = GameObject.FindObjectOfType<BallSignal>();
+
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.useGravity = false; // Turn off Ball gravity at start
         startPosition = transform.position;
@@ -21,6 +24,7 @@ public class Ball : MonoBehaviour {
     public void Launch(Vector3 velocity)
     {
         inPlay = true;
+        ballSignal.SignalRed();
         rigidBody.useGravity = true; //Turn on Ball velocity at launch 
         rigidBody.velocity = velocity;
 
@@ -29,7 +33,6 @@ public class Ball : MonoBehaviour {
     }
 
     public void Reset() {
-        inPlay = false;
         transform.position = startPosition;
         rigidBody.useGravity = false;
         rigidBody.velocity = Vector3.zero;

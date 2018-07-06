@@ -8,10 +8,14 @@ public class PinSetter : MonoBehaviour {
 
     private Animator animator;
     private PinCounter pinCounter;
+    private Ball ball;
+    private BallSignal ballSignal;
 
     private void Start(){
         animator = GetComponent<Animator>();
         pinCounter = GameObject.FindObjectOfType<PinCounter>();
+        ball = GameObject.FindObjectOfType<Ball>();
+        ballSignal = GameObject.FindObjectOfType<BallSignal>();
     }
 
     void Update(){
@@ -53,5 +57,10 @@ public class PinSetter : MonoBehaviour {
         {
            new WaitForSeconds(3);
         }
+    }
+
+    public void EnableBallLaunch() { //Last animation triggers Ball inPlay
+        ball.inPlay = false;
+        ballSignal.SignalGreen();
     }
 }

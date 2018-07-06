@@ -1,5 +1,6 @@
-- Signal if ball can be launched - disable balll launch if animator is running
-- Maybe? - add button for disabling and enabling the "side rails"
+- [DONE]Signal if ball can be launched - disable balll launch if animator is running
+- [DONE]Improve pin settled display
+- [DONE]Fix pin settle green display
+- [DONE]Improve Nudge Arrows
 - Pass final score to end game Screen (static?)
-- [DONE]Add fancy game button sprites
-- Fix pin settle green display
+- <Idea> - add button for disabling and enabling the "side rails"

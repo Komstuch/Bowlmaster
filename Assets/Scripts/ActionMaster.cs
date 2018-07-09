@@ -35,7 +35,6 @@ public static class ActionMaster {
 				nextAction = Action.EndTurn;
 			}
 		}
-		
 		return nextAction;
 	}
 }

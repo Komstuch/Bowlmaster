@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
     private ScoreDisplay scoreDisplay;
     private SceneLoader sceneLoader;
 
+    public static int finalScore;
+
 	void Start () {
         pinSetter = GameObject.FindObjectOfType<PinSetter>();
         ball = GameObject.FindObjectOfType<Ball>();
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour {
 
         if(nextAction == ActionMaster.Action.EndGame)
         {
+            finalScore = ScoreMaster.ScoreCumulative(rolls)[9];
             new WaitForSeconds(3);
             sceneLoader.LoadNextScreen();
         }
